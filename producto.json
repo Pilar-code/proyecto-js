@@ -2,41 +2,41 @@
     {
         "id": 1,
         "nombre": "Labial1",
-        "Precio":800,
-        "color":"rojo",
+        "precio":800,
+        "color":"Marron",
         "stock":30,
         "img":"Labial1.jpg"
     },
     {
         "id": 2,
         "nombre": "Labial2",
-        "Precio":500,
-        "color":"rojo",
-        "stock":30,
+        "precio": 800,
+        "color":"Rosa",
+        "stock":100,
         "img":"Labial2.jpg"
     },
     {
         "id": 3,
         "nombre": "Labial3",
-        "Precio":600,
-        "color":"rojo",
-        "stock":30,
+        "precio":600,
+        "color":"Blanco",
+        "stock":45,
         "img":"Labial3.jpg"
     },
     {
         "id": 4,
         "nombre": "Labial4",
-        "Precio":700,
-        "color":"rojo",
-        "stock":30,
+        "precio":700,
+        "color":"Rojo",
+        "stock":63,
         "img":"Labial4.jpg"
     },
     {
         "id": 5,
         "nombre": "Sombra1",
-        "Precio":1000,
-        "color":"rojo",
-        "stock":30,
+        "precio":1000,
+        "color":"Nude",
+        "stock":88,
         "img":"Sombras1.jpg"
     }
 ]

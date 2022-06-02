@@ -1,6 +1,9 @@
+if(!localStorage.getItem('carrito')){
+    localStorage.setItem('carrito', JSON.stringify([]))
+}
 let productosIndex = document.getElementById('productosIndex')
-fetch('json/Productos.json')
-.then(promise => promise.json)
+fetch('producto.json')
+.then(promise => promise.json())
 .then(data => {
     data.forEach(element => {
         productosIndex.innerHTML += `
@@ -8,12 +11,27 @@ fetch('json/Productos.json')
         <img src="./img/${element.img}" class="card-img-top" alt="...">
         <div class="card-body">
          <h5 class="card-title">${element.nombre}</h5>
-         <p class="card-text">${Element.precio}</p>
-         <p class="card-text">${Element.color}</p>
-         <p class="card-text">${Element.stock}</p>
-         <button id="btnProducto${Element.id}" class="btn btn-secondary"><i class="fa-regular fa-cart-circle-plus"></i></button>
+         <p class="card-text">$${element.precio}</p>
+         <p class="card-text">Color Disponible: ${element.color}</p>
+         <p class="card-text">Stock: ${element.stock}</p>
+         <button id="btnProducto${element.id}" class="btn btn-secondary"><img src="https://img.icons8.com/ios-glyphs/20/undefined/add-shopping-cart.png"/></button>
          </div>
         </div>
         `
+    });
+    data.forEach(element => {
+        document.getElementById(`btnProducto${element.id}`).addEventListener('click', () =>{
+            if (arrayProductos.find(producto => producto.id == element.id)) {
+                let indice = arrayProductos.findIndex(producto => producto.id == element.id)
+                if(arrayProductos[indice].cant < element.stock) {
+                    arrayProductos[indice].cant++;
+                }
+                localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+            }else {
+                let newProducto = new Producto(element.id, element.img, element.nombre, element.color, element.precio, element.stock)
+                arrayProductos.push(newProducto)
+                localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+            }
+        })
     });
 })
