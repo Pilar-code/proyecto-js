@@ -38,5 +38,53 @@
         "color":"Nude",
         "stock":88,
         "img":"Sombras1.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Sombra2",
+        "precio":980,
+        "color":"Nude",
+        "stock":88,
+        "img":"Sombras2.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Sombra3",
+        "precio":1400,
+        "color":"Nude",
+        "stock":88,
+        "img":"Sombras3.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Sombra4",
+        "precio":800,
+        "color":"Nude",
+        "stock":88,
+        "img":"Sombras4.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Kit1",
+        "precio":2500,
+        "color":"Nude",
+        "stock":88,
+        "img":"kit1.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "kit2",
+        "precio":1800,
+        "color":"Nude",
+        "stock":88,
+        "img":"kit2.jpg"
+    },
+    {
+        "id": 11,
+        "nombre": "kit3",
+        "precio":1200,
+        "color":"Nude",
+        "stock":88,
+        "img":"kit3.jpg"
     }
 ]
