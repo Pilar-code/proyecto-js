@@ -31,6 +31,30 @@ function productosEnCarrito(productosStorage) {
   </table>
         `
     });
+    productosStorage.forEach(element => {
+    document.getElementById(`eliminar${element.id}`).addEventListener('click', () =>{
+        if (arrayProductos.find(producto => producto.id == element.id)) {   
+        let indice = arrayProductos.findIndex(producto => producto.id == element.id)
+            if(arrayProductos[indice].cant >= 1) {
+                arrayProductos[indice].cant--;
+                localStorage.setItem('carrito', JSON.stringify(arrayProductos));
+                if(arrayProductos[indice].cant === 0){
+                arrayProductos.Eliminar(producto.id);
+                localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+            }
+            }
+        }
+       })
+        document.getElementById(`sumar${element.id}`).addEventListener('click', () =>{
+            if (arrayProductos.find(producto => producto.id == element.id)) {
+                let indice = arrayProductos.findIndex(producto => producto.id == element.id)
+                if(arrayProductos[indice].cant < element.stock) {
+                    arrayProductos[indice].cant++;
+                }
+                localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+            }
+        })
+    });
 }
 btnCarrito.addEventListener('click', () =>{
     let productosStorage = JSON.parse(localStorage.getItem('carrito'))
@@ -46,26 +70,4 @@ compra.addEventListener('click', () =>{
         showConfirmButton: false,
         timer: 3000,
       })
-})
-
-/* productosEnCarrito.forEach(element => {
-document.getElementById(`eliminar${element.id}`).addEventListener('click', () =>{
-   if(arrayProductos.find((producto) => producto.cant === element.cant)) {
-       let menos = arrayProductos.findIndex((producto) => producto.cant === element.cant)
-       arrayProductos[menos].cant--;
-       localStorage.setItem('carrito', JSON.stringify(arrayProductos))
-    }
-   })
-}) */
-
-productosEnCarrito(productosStorage).forEach(element => {
-    document.getElementById(`sumar${element.id}`).addEventListener('click', () =>{
-        if (arrayProductos.find(producto => producto.id == element.id)) {
-            let indice = arrayProductos.findIndex(producto => producto.id == element.id)
-            if(arrayProductos[indice].cant < element.stock) {
-                arrayProductos[indice].cant++;
-            }
-            localStorage.setItem('carrito', JSON.stringify(arrayProductos))
-        }
-    })
-})
+});
