@@ -39,7 +39,7 @@ function productosEnCarrito(productosStorage) {
                 arrayProductos[indice].cant--;
                 localStorage.setItem('carrito', JSON.stringify(arrayProductos));
                 if(arrayProductos[indice].cant === 0){
-                arrayProductos.Eliminar(producto.id);
+                arrayProductos.Eliminar(element.id);
                 localStorage.setItem('carrito', JSON.stringify(arrayProductos))
             }
             }
