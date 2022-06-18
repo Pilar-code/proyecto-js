@@ -2,7 +2,7 @@ if(!localStorage.getItem('carrito')){
     localStorage.setItem('carrito', JSON.stringify([]))
 }
 let productosIndex = document.getElementById('productosIndex')
-fetch('producto.json')
+fetch('producto.json')/*actualizado*/
 .then(promise => promise.json())
 .then(data => {
     data.forEach(element => {
