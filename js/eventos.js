@@ -71,7 +71,7 @@ compra.addEventListener('click', () =>{
     Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'La compra se ha realido con exito',
+        title: 'La compra se ha realizado con exito',
         showConfirmButton: false,
         timer: 3000,
       })
