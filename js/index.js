@@ -2,7 +2,7 @@ if(!localStorage.getItem('carrito')){
     localStorage.setItem('carrito', JSON.stringify([]))
 }
 let productosIndex = document.getElementById('productosIndex')
-fetch('producto.json')/*actualizado*/
+fetch('producto.json')
 .then(promise => promise.json())
 .then(data => {
     data.forEach(element => {
@@ -32,6 +32,13 @@ fetch('producto.json')/*actualizado*/
                 arrayProductos.push(newProducto)
                 localStorage.setItem('carrito', JSON.stringify(arrayProductos))
             }
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Se añadio al carrito',
+                showConfirmButton: false,
+                timer: 1000,
+              })
         })
     });
 })
