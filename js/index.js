@@ -21,24 +21,24 @@ fetch('producto.json')
     });
     data.forEach(element => {
         document.getElementById(`btnProducto${element.id}`).addEventListener('click', () =>{
-            if (arrayProductos.find(producto => producto.id == element.id)) {
-                let indice = arrayProductos.findIndex(producto => producto.id == element.id)
-                if(arrayProductos[indice].cant < element.stock) {
+                if (arrayProductos.find(producto => producto.id == element.id)) {
+                    let indice = arrayProductos.findIndex(producto => producto.id == element.id)
+                    if(arrayProductos[indice].cant < element.stock) {
                     arrayProductos[indice].cant++;
+                    }
+                    localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+                }else {
+                    let newProducto = new Producto(element.id, element.img, element.nombre, element.color, element.precio, element.stock)
+                    arrayProductos.push(newProducto)
+                    localStorage.setItem('carrito', JSON.stringify(arrayProductos))
                 }
-                localStorage.setItem('carrito', JSON.stringify(arrayProductos))
-            }else {
-                let newProducto = new Producto(element.id, element.img, element.nombre, element.color, element.precio, element.stock)
-                arrayProductos.push(newProducto)
-                localStorage.setItem('carrito', JSON.stringify(arrayProductos))
-            }
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Se añadio al carrito',
-                showConfirmButton: false,
-                timer: 1000,
-              })
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Se añadio al carrito',
+                    showConfirmButton: false,
+                    timer: 1000,
+                })
         })
     });
 })

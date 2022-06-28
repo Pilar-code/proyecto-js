@@ -2,6 +2,7 @@ let btnCarrito = document.getElementById('btnCarrito')
 let carritoBody = document.getElementById('carritoBody')
 let compra = document.getElementById('compra')
 
+
 function productosEnCarrito(productosStorage) {
     carritoBody.innerHTML = " "
     productosStorage.forEach(element => {
@@ -40,34 +41,44 @@ function productosEnCarrito(productosStorage) {
                     if(arrayProductos[indice].cant === 0 ){
                         arrayProductos.splice(indice, 1)
                     }
-                    localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+                    
+                    let productosStorage = JSON.parse(localStorage.getItem('carrito'))
+                    productosStorage[indice].cant--;
                 }
             }
+            localStorage.setItem('carrito', JSON.stringify(arrayProductos))
         });
         document.getElementById(`sumar${element.id}`).addEventListener('click', () =>{
             if (arrayProductos.find(producto => producto.id == element.id)) {
                 let indice = arrayProductos.findIndex(producto => producto.id == element.id)
                 if(arrayProductos[indice].cant < element.stock) {
                     arrayProductos[indice].cant++;
-                    localStorage.setItem('carrito', JSON.stringify(arrayProductos))
+                   
+                    let productosStorage = JSON.parse(localStorage.getItem('carrito'))
+                    productosStorage[indice].cant++;
                 }
             }
-            
+            localStorage.setItem('carrito', JSON.stringify(arrayProductos))
         });
     })
 }
-
-btnCarrito.addEventListener('click', () =>{
+ 
+btnCarrito.addEventListener ('click', ()=> {
+    let productosStorage = JSON.parse(localStorage.getItem('carrito'))
+    productosEnCarrito(productosStorage)
     productosEnCarrito(arrayProductos)
 })
+  
 
-carritoBody.addEventListener('click', () => {
-   productosEnCarrito(arrayProductos) 
+carritoBody.addEventListener('mousemove', () =>{
+    let productosStorage = JSON.parse(localStorage.getItem('carrito'))
+    productosEnCarrito(arrayProductos)
+    productosEnCarrito(productosStorage)
+    
 })
 
 compra.addEventListener('click', () =>{
     LimpiarCarrito();
-    localStorage.clear();
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -75,11 +86,11 @@ compra.addEventListener('click', () =>{
         showConfirmButton: false,
         timer: 3000,
       })
-    arrayProductos = [];
 });
 
 function LimpiarCarrito() {
     while(carritoBody.firstChild){
        carritoBody.removeChild(carritoBody.firstChild)
     }
+    arrayProductos = [];
 }
